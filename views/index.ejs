@@ -1,26 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vicroads project</title>
+    <title>Vicroads Project</title>
+    <link rel="stylesheet" href="/styles/main.css">
 </head>
 <body>
-    <h1>Freeway Travel Time Estimator</h1>
-    <form action="/get-estimate" method="POST">
-        <select id="freeway" name="freeway" required>
-            <option value="">--Please choose a freeway--</option>
-            <% freeways.forEach(function(freeway) { %>
-                <option value="<%= freeway %>"><%= freeway %></option>
-            <% }); %>
-        </select>
-        <br><br>
-        <label for="travelTime">Estimated Travel Time (minutes): 
-            <%= typeof travelTime !== 'undefined' ? travelTime : 'Not available' %>
-        </label>
-        <br><br>
-        <input id="get" type="submit" value="Get estimate travel time">
-    </form>
+    <header>
+        <h1>Melbounre Freeway Travel Time Estimator</h1>
+    </header>
+    <div class="hero">
+        <img src="/images/Melburnian_Skyline_b.jpg" alt="Hero Image">
+    </div>
+    <div class="container">
+        <form action="/get-estimate" method="POST">
+            <select id="freeway" name="freeway" required>
+                <option value="">--Please choose a freeway--</option>
+                <% freeways.forEach(function(freeway) { %>
+                    <option value="<%= freeway %>"><%= freeway %></option>
+                <% }); %>
+            </select>
+            <label for="travelTime">Estimated Travel Time (minutes): 
+                <%= typeof travelTime !== 'undefined' ? travelTime : 'Not available' %>
+            </label>
+            <input id="get" type="submit" value="Get estimate travel time">
+        </form>
+    </div>
 </body>
 </html>
+
