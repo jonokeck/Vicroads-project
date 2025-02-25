@@ -33,7 +33,7 @@ app.get('/', async (req, res) => {
 
 app.post("/get-estimate", async (req, res) => {
     try {
-        const { freeway } = req.body; // Get the selected freeway from the form
+        const freeway = req.body.freeway; // Get the selected freeway from the form
         const response = await axios.get(API_URL, {
             headers: { 'Ocp-Apim-Subscription-Key': API_KEY }
         });
@@ -49,7 +49,7 @@ app.post("/get-estimate", async (req, res) => {
         res.render("index.ejs", {
             freeways: Array.from(new Set(data.features.map(f => f.properties.freewayName))),
             travelTime: travelTime,
-            selectedFreeway: freeway
+            selectedFreeway: poo
         });
     } catch (error) {
         console.log(error.response ? error.response.data : error.message);
@@ -60,3 +60,4 @@ app.post("/get-estimate", async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
